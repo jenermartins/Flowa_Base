@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Projetos\\Flowa_Base\\OrderGenerator\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.OrderGenerator.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.OrderGenerator.props",
+      "PackagePath": "build\\OrderGenerator.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.OrderGenerator.props",
+      "PackagePath": "buildMultiTargeting\\OrderGenerator.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.OrderGenerator.props",
+      "PackagePath": "buildTransitive\\OrderGenerator.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

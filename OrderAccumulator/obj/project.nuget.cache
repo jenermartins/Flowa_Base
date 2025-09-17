@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "f+uox820bZ8=",
+  "success": true,
+  "projectFilePath": "C:\\Projetos\\Flowa_Base\\OrderAccumulator\\OrderAccumulator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\jener\\.nuget\\packages\\quickfixn.core\\1.13.1\\quickfixn.core.1.13.1.nupkg.sha512",
+    "C:\\Users\\jener\\.nuget\\packages\\quickfixn.fix4.4\\1.13.0\\quickfixn.fix4.4.1.13.0.nupkg.sha512"
+  ],
+  "logs": []
+}

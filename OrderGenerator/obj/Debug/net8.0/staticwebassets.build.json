@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "q/tFavc2AV7nazaNM8bu1sHManzB94XUBes7VpJ9rPs=",
+  "Source": "OrderGenerator",
+  "BasePath": "_content/OrderGenerator",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "OrderGenerator\\wwwroot",
+      "Source": "OrderGenerator",
+      "ContentRoot": "C:\\Projetos\\Flowa_Base\\OrderGenerator\\wwwroot\\",
+      "BasePath": "_content/OrderGenerator",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Projetos\\Flowa_Base\\OrderGenerator\\wwwroot\\index.html",
+      "SourceId": "OrderGenerator",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projetos\\Flowa_Base\\OrderGenerator\\wwwroot\\",
+      "BasePath": "_content/OrderGenerator",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    }
+  ]
+}
