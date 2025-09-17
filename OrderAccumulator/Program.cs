@@ -100,8 +100,6 @@ namespace OrderAccumulator
             }
         }
 
-    }
-
         public (bool Accepted, string Message, decimal NewExposure) ProcessOrder(Order order)
         {
             try
@@ -142,6 +140,7 @@ namespace OrderAccumulator
             {
                 return (false, $"Erro: {ex.Message}", 0);
             }
+
         }
 
         public class Order
@@ -152,7 +151,8 @@ namespace OrderAccumulator
             public required decimal Price { get; set; }
             public required string OrderID { get; set; }
         }
-        
+
+    }
 
     class Program
     {
@@ -170,6 +170,7 @@ namespace OrderAccumulator
                 acceptor.Start();
                 Console.WriteLine("Order Accumulator iniciado. Pressione qualquer tecla para sair.");
                 Console.ReadKey();
+                acceptor.Stop();
             }
             catch (Exception ex)
             {

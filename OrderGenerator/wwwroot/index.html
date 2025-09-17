@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Order Generator</title>
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
     <style>
         body {font-family: Arial, sans-serif; margin: 40px; }
         .form-group {margin-bottom: 15px;}
@@ -55,58 +56,52 @@
     <div id="result" class="result" style="display:none;"></div>
 
     <script>
-        document.getElementById('orderForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
+    document.getElementById('orderForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
 
-            const order = 
-            {
-                symbol: document.getElementById('symbol').value,
-                orderType: document.getElementById('orderType').value,
-                quantity: document.getElementById('quantity').value,
-                price: document.getElementById('price').value
+        const order = 
+        {
+            symbol: document.getElementById('symbol').value,
+            side: document.getElementById('orderType').value,  
+            quantity: parseInt(document.getElementById('quantity').value),
+            price: parseFloat(document.getElementById('price').value)
+        }
+
+        try {
+            const response = await fetch('http://localhost:5258/api/Order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(order)
+            });
+
+            // Verifica se a resposta é válida
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
 
-            try {
-                const response = await fetch('/api/orders', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(orderData)
-                });
+            const result = await response.json();
+            const resultDiv = document.getElementById('result');
 
-                const result = await response.json();
-                const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 
+            `<h3>${result.accepted ? "Ordem Aceita" : "Ordem Rejeitada"}</h3>
+            <p><strong>ID da Ordem:</strong> ${result.orderId}</p>
+            <p><strong>Mensagem:</strong> ${result.message}</p>
+            <p><strong>Exposição atual:</strong> R$ ${result.currentExposure.toFixed(2)}</p>`;
 
-                resultDiv.innerHTML = 
-                '<h3>${result.accepted ? "Ordem Aceita" : "Ordem Rejeitada"}</h3>'+
-                '<p><strong>ID da Ordem:</strong> ${result.id}</p>'+
-                '<p><strong>Mensagem:</strong> ${result.message}</p>'+
-                '<p><strong>Exposição atual:</strong> R$ ${result.currentExposure.toFixed(2)}</p>';
+            resultDiv.className = result.accepted ? 'result success' : 'result error';
+            resultDiv.style.display = 'block';
 
-                resultDiv.className = result.accepted ? 'result success' : 'result error';
-                resultDiv.style.display = 'block';
-/*
-                if (response.ok) {
-                    const data = await response.json();
-                    resultDiv.className = 'result success';
-                    resultDiv.innerHTML = `<strong>Sucesso!</strong> Ordem enviada com ID: ${data.id}`;
-                } else {
-                    const errorData = await response.json();
-                    resultDiv.className = 'result error';
-                    resultDiv.innerHTML = `<strong>Erro:</strong> ${errorData.message || 'Falha ao enviar a ordem.'}`;
-                }
-                resultDiv.style.display = 'block';
-*/
-            } catch (error) {
-                const resultDiv = document.getElementById('result');
-                resultDiv.className = 'result error';
-                resultDiv.innerHTML = `<strong>Erro:</strong> Falha ao conectar ao servidor.`;
-                resultDiv.style.display = 'block';
-            }
-        });
-
-    </script>
+        } catch (error) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.className = 'result error';
+            resultDiv.innerHTML = '<strong>Erro:</strong> Falha ao conectar ao servidor.';
+            resultDiv.style.display = 'block';
+            console.error('Erro detalhado:', error);
+        }
+    });
+</script>
 
 </body>
 </html>

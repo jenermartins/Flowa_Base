@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrderAccumulator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d7d2797fa92777a35e2097471791f3e511e4445")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec0a3528ac2b8a1b99ceced3a47647d0c2a8ced1")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrderAccumulator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrderAccumulator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
