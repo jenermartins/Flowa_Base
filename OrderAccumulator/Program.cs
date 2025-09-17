@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Dynamic;
 using QuickFix;
 using QuickFix.Fields;
 using QuickFix.Logger;
@@ -101,9 +102,61 @@ namespace OrderAccumulator
 
     }
 
+        public (bool Accepted, string Message, decimal NewExposure) ProcessOrder(Order order)
+        {
+            try
+            {
+                //Validar entrada
+                if (order.Quantity <= 0 || order.Quantity >= 100000)
+                    return (false, "Quantidade inválida", 0);
+
+                if (order.Price <= 0 || order.Price >= 1000)
+                    return (false, "Preço inválido", 0);
+
+                if (order.Side != "Compra" && order.Side != "Venda")
+                    return (false, "Lado inválido", 0);
+
+                //Calcular exposição
+                decimal currentExposure = _exposureBySymbol.GetValueOrDefault(order.Symbol, 0m);
+                decimal orderValue = order.Price * order.Quantity;
+
+                decimal newExposure = order.Side == "Compra"
+                    ? currentExposure + orderValue
+                    : currentExposure - orderValue;
+
+                //Verificar limite
+                if (Math.Abs(newExposure) <= ExposureLimit)
+                {
+                    _exposureBySymbol[order.Symbol] = newExposure;
+                    return (true, $"Ordem aceita. Exposição {order.Symbol}: R$ {newExposure:N2}", newExposure);
+
+                }
+                else
+                {
+                    return (false, $"Ordem rejeitada. Limite excedido para {order.Symbol}", currentExposure);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                return (false, $"Erro: {ex.Message}", 0);
+            }
+        }
+
+        public class Order
+        {
+            public required string Symbol { get; set; }
+            public required string Side { get; set; }
+            public required int Quantity { get; set; }
+            public required decimal Price { get; set; }
+            public required string OrderID { get; set; }
+        }
+        
+
     class Program
     {
-        static void Main(string [] args)
+        static void Main(string[] args)
         {
             try
             {
@@ -117,11 +170,6 @@ namespace OrderAccumulator
                 acceptor.Start();
                 Console.WriteLine("Order Accumulator iniciado. Pressione qualquer tecla para sair.");
                 Console.ReadKey();
-
-                while (true)
-                {
-                    System.Threading.Thread.Sleep(1000);
-                }
             }
             catch (Exception ex)
             {

@@ -16,3 +16,4 @@ C:\Projetos\Flowa_Base\OrderAccumulator\bin\Debug\net8.0\QuickFix.dll
 C:\Projetos\Flowa_Base\OrderAccumulator\bin\Debug\net8.0\QuickFix.FIX44.dll
 C:\Projetos\Flowa_Base\OrderAccumulator\obj\Debug\net8.0\OrderAccumulator.csproj.AssemblyReference.cache
 C:\Projetos\Flowa_Base\OrderAccumulator\obj\Debug\net8.0\OrderAcc.CF20D3E6.Up2Date
+C:\Projetos\Flowa_Base\OrderAccumulator\obj\Debug\net8.0\OrderAccumulator.sourcelink.json

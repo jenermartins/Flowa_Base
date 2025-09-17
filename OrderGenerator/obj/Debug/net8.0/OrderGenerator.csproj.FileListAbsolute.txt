@@ -37,3 +37,4 @@ C:\Projetos\Flowa_Base\OrderGenerator\obj\Debug\net8.0\refint\OrderGenerator.dll
 C:\Projetos\Flowa_Base\OrderGenerator\obj\Debug\net8.0\OrderGenerator.pdb
 C:\Projetos\Flowa_Base\OrderGenerator\obj\Debug\net8.0\OrderGenerator.genruntimeconfig.cache
 C:\Projetos\Flowa_Base\OrderGenerator\obj\Debug\net8.0\ref\OrderGenerator.dll
+C:\Projetos\Flowa_Base\OrderGenerator\obj\Debug\net8.0\OrderGenerator.sourcelink.json
